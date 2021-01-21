@@ -1,0 +1,55 @@
+const Discord = require('discord.js');
+const db = require('quick.db')
+
+exports.run = (client, message, args) => {
+  message.react("✅");
+    const hataembed = new Discord.MessageEmbed()
+    .setColor("RED")
+    .setTimestamp()
+    .addField('HATA:', 'Lütfen bir sayı belirtin!')
+    const hata = new Discord.MessageEmbed()
+    .setColor("RED")
+    .setTimestamp()
+    .addField('HATA:', 'Lütfen bir kanal etiketleyin!')
+let sayi = args[0]
+if(sayi == "Kapat") {
+   const hataembed = new Discord.MessageEmbed()
+    .setColor("RED")
+    .setTimestamp()
+    .addField('HATA:', 'Açık Olmayan Bir Şeyi Kapatamam.')
+  let acik = db.fetch(`sayac_${message.guild.id}`);
+  if(!acik) return message.channel.send(hata)
+db.delete(`sayacsayi_${message.guild.id}`)
+db.delete(`sayac_${message.guild.id}`)
+        const ok = new Discord.MessageEmbed()
+    .setColor("RANDOM")
+    .setTimestamp()
+    .addField('Eylem:', 'Sayaç sistemi kapatıldı.') 
+      message.channel.send(ok)
+  return;
+}
+let kanal = message.mentions.channels.first()
+if(!sayi) return message.channel.send(hataembed);
+if(!kanal) return message.channel.send(hata);
+db.set(`sayacsayi_${message.guild.id}`, sayi)
+db.set(`sayac_${message.guild.id}`, kanal)
+      const ok = new Discord.MessageEmbed()
+    .setColor("RANDOM")
+    .setTimestamp()
+    .addField('Eylem:', 'Sayaç sistemi başarıyla aktifleştirildi.') 
+      message.channel.send(ok)
+};
+
+exports.conf = {
+  enabled: true,
+  guildOnly: false,
+  aliases: [],
+  permLevel: 0
+};
+
+exports.help = {
+  name: 'sayaç',
+  description: '',
+  category: '',
+  usage: 'sayaç'
+};

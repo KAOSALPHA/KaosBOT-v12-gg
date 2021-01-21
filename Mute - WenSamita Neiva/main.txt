@@ -1,0 +1,24 @@
+//Muteliyken sw den çıkana mute
+client.on('guildMemberAdd', async(member) => {
+  let mute = db.fetch(`muterol_${member.guild.id}`);
+  let mutelimi = db.fetch(`muteli_${member.guild.id + member.id}`)
+  if (!mutelimi) return;
+  if (mutelimi == "muteli") {
+  member.roles.add(mute)
+   member.send("Muteliyken Sunucudan Çıktığın için Yeniden Mutelendin!")
+       const modlog = db.fetch(`modlogKK_${member.guild.id}`)
+    if (!modlog) return;
+     db.delete(`muteli_${member.guild.id + member.id}`)
+        const embed = new Discord.MessageEmbed()
+      .setThumbnail(member.avatarURL())
+      .setColor(0x00AE86)
+      .setTimestamp()
+      .addField('Eylem:', '**Mute**')
+      .addField('Kullanıcı:', `${member} (${member.id})`)
+      .addField('Yetkili:', `${client.user} (${client.user.id})`)
+      .addField('Süre', "Sonsuz")
+      .addField('Sebep', "Muteliyken Sunucudan Çıkmak.")
+     member.guild.channels.cache.get(modlog).send(embed);
+  }
+  })
+  //Muteliyken sw den çıkana mute

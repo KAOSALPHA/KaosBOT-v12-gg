@@ -1,0 +1,16 @@
+//Bot.js de boş bir yere atın.
+client.on('guildMemberAdd', member => {
+let sayaç = db.fetch(`sayacsayi_${member.guild.id}`)
+let kanal = db.fetch(`sayac_${member.guild.id}`)
+if(!kanal) return;
+var kalan = `${sayaç - member.guilds.members.cache.size}`
+client.channels.cache.get(kanal).send(`Hoşgeldin ${member}! \`${sayaç}\` kişi olmamıza \`${kalan}\` kişi kaldı!`)
+});
+
+client.on('guildMemberRemove', member => {
+let sayaç = db.fetch(`sayacsayi_${member.guild.id}`)
+let kanal = db.fetch(`sayac_${member.guild.id}`)
+if(!kanal) return;
+var kalan = `${sayaç - member.guilds.members.cache.size}`
+client.channels.cache.get(kanal).send(`Hoşçakal ${member}! \`${sayaç}\` kişi olmamıza \`${kalan}\` kişi kaldı!`)
+});
