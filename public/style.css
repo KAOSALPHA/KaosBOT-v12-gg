@@ -1,0 +1,92 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background: rgb(0,128,255);
+    height: 100;
+    justify-content: center;
+}
+
+.header {
+    height: 100px;
+    width: 100%;
+    background: #313131;
+    align-items: center;
+    margin: auto;
+    display: flex;
+}
+
+.logontext {
+    display: flex;
+    margin: auto;
+    position: relative;
+}
+
+.logo {
+    width: 75px;
+    height: 75px;
+
+}
+
+.text {
+    color: white;
+    display: block;
+    font-size: 2em;
+    margin-left: 15px;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+}
+
+.button-group {
+    margin: auto;
+}
+
+.btn {
+    padding: 15px;
+    background: dodgerblue;
+    border-radius: 4px;
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    margin-left: 5px;
+
+}
+
+.footer {
+    position: absolute;
+    width: 100%;
+    text-align: end;
+    background: #313131;
+    height: 100px;
+    bottom: 0;
+    color: white;
+}
+
+.first {
+    position: relative;
+    height: 500px;
+    width: 750px;
+    margin: 25px auto;
+    top: 100px;
+    background: #313131;
+    border-radius: 5px;
+}
+.first h2{
+    padding-top: 25px;
+    color: white;
+}
+.desc{
+    padding-top: 25px;
+    color: white;
+}
+.desc-logo{
+    margin-top: 25px;
+    width: 250px;
+}
+.footer p  {
+    position: relative;
+    top: 80px;
+}
